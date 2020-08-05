@@ -4,33 +4,36 @@ import './styles.css';
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 
-const TeacherItem: React.FC = () => {
+export interface ITeacher {
+  avatar: string;
+  name: string;
+  subject: string;
+  bio: string;
+  cost: number;
+  whatsapp: string;
+}
+
+interface ITeacherItemProps {
+  teacher: ITeacher;
+}
+
+const TeacherItem: React.FC<ITeacherItemProps> = ({ teacher }) => {
   return (
     <article className="teacher-item">
       <header>
-        <img
-          src="https://avatars0.githubusercontent.com/u/42596775?s=460&u=8ddc06cf5793a75d7e7ad462ddfed52b8ef4d503&v=4"
-          alt="Ivan Seibel"
-        />
+        <img src={teacher.avatar} alt={teacher.name} />
         <div>
-          <strong>Ivan Seibel</strong>
-          <span>Chemistry</span>
+          <strong>{teacher.name}</strong>
+          <span>{teacher.subject}</span>
         </div>
       </header>
 
-      <p>
-        Entusiasta das melhores tecnologias de química avançada.
-        <br />
-        <br />
-        Apaixonado por explodir coisas em laboratório e por mudar a vida das
-        pessoas através de experiências. Mais de 200 mil pessoas já passaram por
-        uma das minhas explosões.
-      </p>
+      <p>{teacher.bio}</p>
 
       <footer>
         <p>
           Price/hour
-          <strong>R$ 80,00</strong>
+          <strong>{`US$/hour ${teacher.cost}`}</strong>
         </p>
         <button type="button">
           <img src={whatsappIcon} alt="Whatsapp" />
