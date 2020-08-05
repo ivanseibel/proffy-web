@@ -25,7 +25,7 @@ const TeacherList: React.FC = () => {
 
       if (filterIsIncomplete) {
         toast.error(
-          'Your must provide subject, week day and time to search by classes',
+          'Your must provide subject, week day and time to search by teachers',
         );
         return;
       }
