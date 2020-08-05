@@ -1,5 +1,6 @@
 import React, { useState, useCallback, FormEvent } from 'react';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
 
 import './styles.css';
@@ -17,7 +18,7 @@ interface IScheduleItem {
 
 const TeacherForm: React.FC = () => {
   const [scheduleItems, setScheduleItems] = useState<IScheduleItem[]>([
-    { week_day: null, from: '', to: '' },
+    { week_day: 0, from: '', to: '' },
   ]);
 
   const [name, setName] = useState('');
@@ -27,6 +28,8 @@ const TeacherForm: React.FC = () => {
 
   const [subject, setSubject] = useState('');
   const [cost, setCost] = useState('');
+
+  const history = useHistory();
 
   const addNewScheduleItem = useCallback(
     (scheduleItem: IScheduleItem) => {
@@ -53,12 +56,13 @@ const TeacherForm: React.FC = () => {
         .post('classes', data)
         .then(() => {
           toast.success('Class registered with success!');
+          history.push('/');
         })
         .catch(error => {
           toast.error(`The is an erro submitting class data: ${error.message}`);
         });
     },
-    [avatar, bio, cost, name, scheduleItems, subject, whatsapp],
+    [avatar, bio, cost, history, name, scheduleItems, subject, whatsapp],
   );
 
   const setScheduleItemValue = useCallback(
