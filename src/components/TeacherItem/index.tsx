@@ -1,14 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 import './styles.css';
 
-import whatsappIcon from '../../assets/images/icons/whatsapp.svg'
+import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 
-function TeacherItem() {
-  return(
+const TeacherItem: React.FC = () => {
+  return (
     <article className="teacher-item">
       <header>
-        <img src="https://avatars0.githubusercontent.com/u/42596775?s=460&u=8ddc06cf5793a75d7e7ad462ddfed52b8ef4d503&v=4" alt="Ivan Seibel"/>
+        <img
+          src="https://avatars0.githubusercontent.com/u/42596775?s=460&u=8ddc06cf5793a75d7e7ad462ddfed52b8ef4d503&v=4"
+          alt="Ivan Seibel"
+        />
         <div>
           <strong>Ivan Seibel</strong>
           <span>Chemistry</span>
@@ -17,8 +20,11 @@ function TeacherItem() {
 
       <p>
         Entusiasta das melhores tecnologias de química avançada.
-        <br/><br/>
-        Apaixonado por explodir coisas em laboratório e por mudar a vida das pessoas através de experiências. Mais de 200 mil pessoas já passaram por uma das minhas explosões.
+        <br />
+        <br />
+        Apaixonado por explodir coisas em laboratório e por mudar a vida das
+        pessoas através de experiências. Mais de 200 mil pessoas já passaram por
+        uma das minhas explosões.
       </p>
 
       <footer>
@@ -27,12 +33,12 @@ function TeacherItem() {
           <strong>R$ 80,00</strong>
         </p>
         <button type="button">
-          <img src={whatsappIcon} alt="Whatsapp"/>
+          <img src={whatsappIcon} alt="Whatsapp" />
           Get in touch
         </button>
       </footer>
     </article>
-  )
-}
+  );
+};
 
-export default TeacherItem
+export default TeacherItem;
