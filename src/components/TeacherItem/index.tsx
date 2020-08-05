@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import './styles.css';
 
+import { toast } from 'react-toastify';
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
+import api from '../../services/api';
 
 export interface ITeacher {
+  id: string;
   avatar: string;
   name: string;
   subject: string;
@@ -18,6 +21,12 @@ interface ITeacherItemProps {
 }
 
 const TeacherItem: React.FC<ITeacherItemProps> = ({ teacher }) => {
+  const createConnection = useCallback(() => {
+    api.post('connections', { user_id: teacher.id }).catch(error => {
+      toast.error(`There is an error while contacting teacher: ${error}`);
+    });
+  }, [teacher.id]);
+
   return (
     <article className="teacher-item">
       <header>
@@ -35,10 +44,13 @@ const TeacherItem: React.FC<ITeacherItemProps> = ({ teacher }) => {
           Price/hour
           <strong>{`US$/hour ${teacher.cost}`}</strong>
         </p>
-        <button type="button">
+        <a
+          href={`https://wa.me/${teacher.whatsapp}`}
+          onClick={createConnection}
+        >
           <img src={whatsappIcon} alt="Whatsapp" />
           Get in touch
-        </button>
+        </a>
       </footer>
     </article>
   );
