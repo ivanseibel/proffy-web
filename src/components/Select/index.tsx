@@ -22,8 +22,8 @@ const Select: React.FC<ISelectProps> = ({
   return (
     <div className="select-block" style={{ marginTop }}>
       <label htmlFor={name}>{label}</label>
-      <select id={name} {...rest}>
-        <option value="" disabled selected hidden>
+      <select id={name} {...rest} defaultValue="">
+        <option value="" disabled hidden>
           Select an option
         </option>
 
