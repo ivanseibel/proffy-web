@@ -169,7 +169,7 @@ const TeacherForm: React.FC = () => {
                 type="button"
                 onClick={() => {
                   addNewScheduleItem({
-                    week_day: null,
+                    week_day: 0,
                     from: '',
                     to: '',
                   });

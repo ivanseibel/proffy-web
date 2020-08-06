@@ -7,7 +7,7 @@ import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 import api from '../../services/api';
 
 export interface ITeacher {
-  id: string;
+  user_id: string;
   avatar: string;
   name: string;
   subject: string;
@@ -22,10 +22,10 @@ interface ITeacherItemProps {
 
 const TeacherItem: React.FC<ITeacherItemProps> = ({ teacher }) => {
   const createConnection = useCallback(() => {
-    api.post('connections', { user_id: teacher.id }).catch(error => {
+    api.post('connections', { user_id: teacher.user_id }).catch(error => {
       toast.error(`There is an error while contacting teacher: ${error}`);
     });
-  }, [teacher.id]);
+  }, [teacher.user_id]);
 
   return (
     <article className="teacher-item">
